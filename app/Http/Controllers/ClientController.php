@@ -113,7 +113,21 @@ class ClientController extends Controller
 
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        // On supprime le client correspondant à l'ID
+        $client = Client::findOrFail($id);
+        $client->delete();
 
+        // On redirige l'utilisateur vers la page de liste des clients avec un message de confirmation
+        return redirect()->route('clients.index')->with('success', 'Client supprimé avec succès !');
+    }
 
 
 }
