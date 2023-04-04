@@ -28,6 +28,30 @@ class ClientController extends Controller
         return view('clients.create'); // Renvoie la vue create.blade.php
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            'email' => 'required|email|unique:clients,email',
+            'telephone' => 'required',
+        ]); // Valide les données envoyées par le formulaire
+
+        $client = new Client;
+        $client->nom = $request->nom;
+        $client->email = $request->email;
+        $client->telephone = $request->telephone;
+        $client->save(); // Crée et enregistre le nouveau client dans la base de données
+
+        return redirect()->route('clients.index')->with('success', 'Client ajouté avec succès.'); // Redirige vers la page d'accueil des clients avec un message de succès
+
+    }
+
 
 
 
