@@ -18,6 +18,17 @@ class ClientController extends Controller
         return view('clients.index', compact('clients')); // Renvoie la vue index.blade.php avec les clients récupérés
 
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('clients.create'); // Renvoie la vue create.blade.php
+    }
+
+
 
 
 }
