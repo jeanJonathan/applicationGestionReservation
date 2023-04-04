@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 //Ajout de la route ressources pour le controller client
-Route::ressources('/client','App\Http\Controllers\ClientController');
+Route::resource('/clients','App\Http\Controllers\ClientController');
 //Notons que cela creer automatiquement les routes pour les methodes CRUD du controller client
