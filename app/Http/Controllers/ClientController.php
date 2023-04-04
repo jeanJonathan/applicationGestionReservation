@@ -66,6 +66,20 @@ class ClientController extends Controller
 
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $client = Client::findOrFail($id); // Récupère le client spécifique avec l'ID fourni
+
+        return view('clients.edit', compact('client')); // Renvoie la vue edit.blade.php avec les détails du client récupéré
+
+    }
+
 
 
 
