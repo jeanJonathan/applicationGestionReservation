@@ -52,6 +52,20 @@ class ClientController extends Controller
 
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $client = Client::findOrFail($id); // Récupère le client spécifique avec l'ID fourni
+
+        return view('clients.show', compact('client')); // Renvoie la vue show.blade.php avec les détails du client récupéré
+
+    }
+
 
 
 
