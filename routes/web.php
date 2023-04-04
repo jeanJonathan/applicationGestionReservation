@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Ajout de la route ressources pour le controller client
+Route::ressources('/client','App\Http\Controllers\ClientController');
+//Notons que cela creer automatiquement les routes pour les methodes CRUD du controller client
