@@ -80,6 +80,39 @@ class ClientController extends Controller
 
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Validation des données envoyées par le formulaire d'édition
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required',
+            'email' => 'required|email|unique:clients,email,'.$id,
+            'telephone' => 'required',
+        ]);
+
+        // Si la validation échoue, on redirige l'utilisateur vers le formulaire d'édition avec les erreurs affichées
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // On met à jour les données du client correspondant à l'ID
+        $client = Client::findOrFail($id);
+        $client->nom = $request->input('nom');
+        $client->email = $request->input('email');
+        $client->telephone = $request->input('telephone');
+        $client->save();
+
+        // On redirige l'utilisateur vers la page de liste des clients avec un message de confirmation
+        return redirect()->route('clients.index')->with('success', 'Client mis à jour avec succès !');
+
+    }
+
 
 
 
