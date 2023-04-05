@@ -118,6 +118,14 @@ La deuxième étape consiste à modifier les méthodes du contrôleur pour retou
 
 Exemple de méthode index() du contrôleur:
 
+
+C:\wamp64\bin\php\php8.0.13\applicationGestionReservation>php artisan swagger-lume:generate
+
+   ERROR  There are no commands defined in the "swagger-lume" namespace.
+
+
+C:\wamp64\bin\php\php8.0.13\applicationGestionReservation>
+
 php
 Copy code
 public function index()
