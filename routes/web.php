@@ -20,3 +20,7 @@ Route::get('/', function () {
 //Ajout de la route ressources pour le controller client
 Route::resource('/clients','App\Http\Controllers\ClientController');
 //Notons que cela creer automatiquement les routes pour les methodes CRUD du controller client
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
